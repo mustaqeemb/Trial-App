@@ -46,7 +46,7 @@ export default function TabTwoScreen() {
         </ThemedText>
         
         <Link href="/auth/login" asChild>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} activeOpacity={0.8}>
             <ThemedText style={styles.loginButtonText}>
               Sign In with Phone
             </ThemedText>
@@ -147,8 +147,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0a7ea4',
     paddingHorizontal: 30,
     paddingVertical: 15,
-    borderRadius: 8,
+    borderRadius: 12,
     marginTop: 10,
+    shadowColor: '#0a7ea4',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
   },
   loginButtonText: {
     color: '#fff',

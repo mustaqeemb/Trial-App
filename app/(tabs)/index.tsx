@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Link } from 'expo-router';
 
 import { HelloWave } from '@/components/hello-wave';
@@ -36,7 +36,7 @@ export default function HomeScreen() {
         </ThemedText>
         
         <Link href="/auth/login" asChild>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} activeOpacity={0.8}>
             <ThemedText style={styles.loginButtonText}>
               Sign In with Phone
             </ThemedText>
@@ -46,15 +46,20 @@ export default function HomeScreen() {
 
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Features</ThemedText>
-        <ThemedText>
-          • Phone number authentication
-        </ThemedText>
-        <ThemedText>
-          • Secure user data storage
-        </ThemedText>
-        <ThemedText>
-          • Cross-platform support
-        </ThemedText>
+        <View style={styles.featureList}>
+          <View style={styles.featureItem}>
+            <ThemedText style={styles.featureIcon}>🔐</ThemedText>
+            <ThemedText style={styles.featureText}>Phone number authentication</ThemedText>
+          </View>
+          <View style={styles.featureItem}>
+            <ThemedText style={styles.featureIcon}>💾</ThemedText>
+            <ThemedText style={styles.featureText}>Secure user data storage</ThemedText>
+          </View>
+          <View style={styles.featureItem}>
+            <ThemedText style={styles.featureIcon}>📱</ThemedText>
+            <ThemedText style={styles.featureText}>Cross-platform support</ThemedText>
+          </View>
+        </View>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -80,13 +85,35 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: '#0a7ea4',
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: 'center',
     marginTop: 10,
+    shadowColor: '#0a7ea4',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
   },
   loginButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  featureList: {
+    gap: 12,
+    marginTop: 12,
+  },
+  featureItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 8,
+  },
+  featureIcon: {
+    fontSize: 24,
+  },
+  featureText: {
+    fontSize: 16,
+    flex: 1,
   },
 });
